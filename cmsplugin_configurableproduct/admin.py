@@ -28,12 +28,15 @@ class ProductTypeIconAdmin(admin.ModelAdmin):
     list_display = ('product_type', 'name', 'image_preview',  )
 
     def image_preview(self, obj):
+      if obj.image && obj.image.exists():
         return U"""
           <span style='display:inline-block;margin:.5em;'>
-            <img src='{url}' />
+            <img src='{url}' style="max-width:64px;max-height:64px"/>
           </span>
           <pre style='display:inline-block;'>{url}</pre>
         """.format(url = obj.image.url)
+      else:
+        return "No Image"
     image_preview.allow_tags=True
 
 admin.site.register(ProductTypeIcon, ProductTypeIconAdmin)
