@@ -28,7 +28,7 @@ class ProductTypeIconAdmin(admin.ModelAdmin):
     list_display = ('product_type', 'name', 'image_preview',  )
 
     def image_preview(self, obj):
-      if obj.image && obj.image.exists():
+      if obj.image and obj.image.exists():
         return U"""
           <span style='display:inline-block;margin:.5em;'>
             <img src='{url}' style="max-width:64px;max-height:64px"/>
